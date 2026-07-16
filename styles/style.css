@@ -1,0 +1,369 @@
+:root {
+    --bag-width: 140px;
+    --bag-height: 460px;
+    --leather-dark: #2b1a12;
+    --leather-mid: #4a2c1a;
+    --leather-light: #7a4a2e;
+    --leather-highlight: #a06a44;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: linear-gradient(to bottom, #4c4c50 0%, #414145 50%, #1c1c20 100%) fixed;
+    color: #e0e0e0;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+html {
+    background: #0a0a12;
+}
+
+.header {
+    text-align: center;
+    padding: 48px 20px 20px;
+}
+
+.header h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 18px;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, #eee, #a0a0b5);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 12px rgba(255,255,255,0.08));
+}
+
+.header p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    opacity: 0.6;
+    max-width: 560px;
+    margin: 0 auto;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    perspective: 1000px;
+}
+
+.bag-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform-origin: top center;
+    transform-style: preserve-3d;
+    transition: transform 0.05s linear;
+}
+
+.chain {
+    width: 8px;
+    height: 70px;
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            #777 0px,
+            #999 2px,
+            #555 4px,
+            #888 8px
+        );
+    border-radius: 4px;
+    box-shadow:
+        inset 1px 0 2px rgba(255,255,255,0.3),
+        inset -1px 0 2px rgba(0,0,0,0.5),
+        2px 0 6px rgba(0,0,0,0.4);
+    position: relative;
+    z-index: 1;
+}
+
+.chain::before {
+    content: '';
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 28px;
+    height: 28px;
+    border: 5px solid #888;
+    border-radius: 50%;
+    box-shadow:
+        inset 0 2px 4px rgba(0,0,0,0.5),
+        inset 0 -1px 2px rgba(255,255,255,0.3),
+        0 2px 6px rgba(0,0,0,0.5);
+}
+
+.chain::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    border: 4px solid #999;
+    border-radius: 50%;
+    box-shadow:
+        inset 0 2px 3px rgba(0,0,0,0.5),
+        0 2px 4px rgba(0,0,0,0.4);
+}
+
+.main_button {
+    position: relative;
+    width: var(--bag-width);
+    height: var(--bag-height);
+    border: none;
+    cursor: pointer;
+    border-radius: 50% 50% 48% 48% / 15% 15% 14% 14%;
+    background:
+        linear-gradient(
+            to right,
+            transparent 49.7%,
+            rgba(20,10,5,0.5) 50%,
+            transparent 50.3%
+        ),
+        linear-gradient(
+            to right,
+            var(--leather-dark) 0%,
+            var(--leather-mid) 18%,
+            var(--leather-light) 42%,
+            var(--leather-highlight) 50%,
+            var(--leather-light) 58%,
+            var(--leather-mid) 82%,
+            var(--leather-dark) 100%
+        ),
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,0.45) 0%,
+            transparent 12%,
+            transparent 85%,
+            rgba(0,0,0,0.4) 100%
+        );
+    box-shadow:
+        8px 14px 40px rgba(0,0,0,0.7),
+        inset 0 15px 30px -10px rgba(0,0,0,0.6),
+        inset 8px 0 15px -5px rgba(255,200,150,0.15),
+        inset -12px 0 20px -5px rgba(0,0,0,0.5),
+        inset 0 -10px 20px -5px rgba(0,0,0,0.5);
+    z-index: 2;
+    overflow: hidden;
+    padding: 0;
+    transition: transform 0.08s ease;
+}
+
+.main_button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        repeating-linear-gradient(
+            45deg,
+            transparent 0px,
+            transparent 3px,
+            rgba(255,255,255,0.012) 3px,
+            rgba(255,255,255,0.012) 5px
+        ),
+        repeating-linear-gradient(
+            -45deg,
+            transparent 0px,
+            transparent 4px,
+            rgba(0,0,0,0.025) 4px,
+            rgba(0,0,0,0.025) 6px
+        ),
+        radial-gradient(circle at 30% 40%, rgba(255,220,180,0.04), transparent 40%),
+        radial-gradient(circle at 70% 60%, rgba(0,0,0,0.06), transparent 50%);
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.main_button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(to bottom,
+            transparent 11%,
+            rgba(0,0,0,0.35) 11.5%,
+            rgba(0,0,0,0.35) 13%,
+            transparent 13.5%
+        ),
+        linear-gradient(to bottom,
+            transparent 24%,
+            rgba(0,0,0,0.3) 24.5%,
+            rgba(0,0,0,0.3) 26%,
+            transparent 26.5%
+        );
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.bag-label {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.15);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
+    pointer-events: none;
+    z-index: 3;
+}
+
+.counter {
+    position: fixed;
+    top: 32px;
+    right: 32px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 20px 28px;
+    border: 2px solid rgba(255,255,255,0.15);
+    border-radius: 14px;
+    background: linear-gradient(160deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+    box-shadow:
+        0 8px 24px rgba(0,0,0,0.5),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+    backdrop-filter: blur(8px);
+    min-width: 130px;
+}
+
+.counter__label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+}
+
+.counter__value {
+    font-size: 3.2rem;
+    font-weight: 800;
+    line-height: 1;
+    color: #fff;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+    font-variant-numeric: tabular-nums;
+}
+
+@keyframes bag-idle {
+    0%, 100% { transform: rotate(-1.5deg); }
+    50% { transform: rotate(1.5deg); }
+}
+
+.main_button:active {
+    transform: scale(1.04) translateY(2px);
+    box-shadow:
+        10px 20px 50px rgba(0,0,0,0.8),
+        inset 0 15px 30px -10px rgba(0,0,0,0.6),
+        inset 8px 0 15px -5px rgba(255,200,150,0.25),
+        inset -12px 0 20px -5px rgba(0,0,0,0.5),
+        inset 0 -10px 20px -5px rgba(0,0,0,0.5);
+}
+
+.main_button:active ~ .bag-label,
+.main_button:active .bag-label {
+    color: rgba(255,255,255,0.3);
+}
+
+.footer {
+    text-align: center;
+    padding: 40px 20px;
+    opacity: 0.55;
+}
+
+.footer p {
+    font-size: 0.95rem;
+    font-weight: 400;
+    margin-bottom: 12px;
+    line-height: 1.5;
+    letter-spacing: 0.3px;
+}
+
+
+.footer__links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 36px;
+    margin-top: 16px;
+}
+
+.footer__links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: filter 0.15s ease;
+}
+
+.footer__links a:hover img {
+    transform: scale(1.2);
+    filter: brightness(1.5);
+}
+
+.footer__links img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.instagram_b img {
+    width: 90px;
+    height: 65px;
+}
+.telegram_b img {
+    width: 55px;
+    height: 55px;
+}
+
+.telegram_b {
+    margin-left: -10px;
+}
+
+.github_b img {
+    width: 55px;
+    height: 55px;
+    border-radius: 30%;
+}
+
+@media (max-width: 900px) {
+    .counter {
+        position: static;
+        flex-direction: row;
+        justify-content: center;
+        gap: 16px;
+        width: 90%;
+        margin: 20px auto 50px;
+        height: 50px;
+    }
+}
+    .counter__label {
+        display: none;
+    }
+    .pear_b {
+    transform-origin: 50% 0%; 
+}
+
+
+
+
+
