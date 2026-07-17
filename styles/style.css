@@ -18,8 +18,10 @@ html {
     background: linear-gradient(to bottom, #4c4c50 0%, #414145 50%, #1c1c20 100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
-    touch-action: pan-y;
-    overscroll-behavior-x: none;
+    touch-action: none;
+    overscroll-behavior: none;
+    -webkit-text-size-adjust: none;
+    -webkit-touch-callout: none;
 }
 
 body {
