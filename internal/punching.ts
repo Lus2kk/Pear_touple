@@ -1,7 +1,12 @@
 // import gsap from 'gsap';
  
 
-// const Bag = document.getElementById('pear_b') as HTMLButtonElement
+const Bag = document.getElementById('pear_b') as HTMLButtonElement
+
+Bag.addEventListener('dblclick', function(event) {
+
+    event.preventDefault();
+},{passive: false});
 
 // Bag.addEventListener( 'click' , () => {
 
